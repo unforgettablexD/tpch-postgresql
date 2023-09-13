@@ -108,18 +108,7 @@ CREATE TABLE LINEITEM ( L_ORDERKEY    INTEGER NOT NULL,
                              L_SHIPMODE     CHAR(10) NOT NULL,
                              L_COMMENT      VARCHAR(44) NOT NULL);
 ```
-13.Load the data into tables by:
-```
-copy region from 'PATH_TO_tpch-dbgen_REPO/tbl/region.tbl' with delimiter as '|' NULL '';
-copy nation from 'PATH_TO_tpch-dbgen_REPO/tbl/nation.tbl' with delimiter as '|' NULL '';
-copy partsupp from 'PATH_TO_tpch-dbgen_REPO/tbl/partsupp.tbl' with delimiter as '|' NULL '';
-copy customer from 'PATH_TO_tpch-dbgen_REPO/tbl/customer.tbl' with delimiter as '|' NULL '';
-copy lineitem from 'PATH_TO_tpch-dbgen_REPO/tbl/lineitem.tbl' with delimiter as '|' NULL '';
-copy orders from 'PATH_TO_tpch-dbgen_REPO/tbl/orders.tbl' with delimiter as '|' NULL '';
-copy part from 'PATH_TO_tpch-dbgen_REPO/tbl/part.tbl' with delimiter as '|' NULL '';
-copy supplier from 'PATH_TO_tpch-dbgen_REPO/tbl/supplier.tbl' with delimiter as '|' NULL '';
-```
-14. Add primary Keys and foreign Keys by running:
+13. Add primary Keys and foreign Keys by running:
 ```
 ALTER TABLE REGION ADD PRIMARY KEY (R_REGIONKEY);
 ALTER TABLE NATION ADD PRIMARY KEY (N_NATIONKEY);
@@ -138,7 +127,19 @@ ALTER TABLE PARTSUPP ADD FOREIGN KEY (PS_PARTKEY) references PART;
 ALTER TABLE ORDERS ADD FOREIGN KEY (O_CUSTKEY) references CUSTOMER;
 ALTER TABLE LINEITEM ADD FOREIGN KEY (L_ORDERKEY)  references ORDERS;
 ALTER TABLE LINEITEM ADD FOREIGN KEY (L_PARTKEY,L_SUPPKEY) references PARTSUPP;
+```
+14.Load the data into tables by:
+```
+copy region from 'PATH_TO_tpch-dbgen_REPO/tbl/region.tbl' with delimiter as '|' NULL '';
+copy nation from 'PATH_TO_tpch-dbgen_REPO/tbl/nation.tbl' with delimiter as '|' NULL '';
+copy partsupp from 'PATH_TO_tpch-dbgen_REPO/tbl/partsupp.tbl' with delimiter as '|' NULL '';
+copy customer from 'PATH_TO_tpch-dbgen_REPO/tbl/customer.tbl' with delimiter as '|' NULL '';
+copy lineitem from 'PATH_TO_tpch-dbgen_REPO/tbl/lineitem.tbl' with delimiter as '|' NULL '';
+copy orders from 'PATH_TO_tpch-dbgen_REPO/tbl/orders.tbl' with delimiter as '|' NULL '';
+copy part from 'PATH_TO_tpch-dbgen_REPO/tbl/part.tbl' with delimiter as '|' NULL '';
+copy supplier from 'PATH_TO_tpch-dbgen_REPO/tbl/supplier.tbl' with delimiter as '|' NULL '';
 COMMIT
 ```
+
 
 
